@@ -1,65 +1,86 @@
 #include <iostream>
-#include <stdlib.h>
-#include <string.h>
-#define MAX 20
+#define tam
 using namespace std;
-class CPalindroma
+class CExpresiones
 {
-private:
-    char dato[MAX];
+    private:
+    int a=0,b=0;
+    char op;
     int tope;
-public:
-    CPalindroma();
+    public:
+        CExpresiones();
+        void convertirPre(char op,int a,int b);
+        void convertirPost(char op,int a, int b);
 
-    void ingresarPalabra(char pa[20]);
-    void imprimirDatos();
-    int compararPalabra(char p[20]);
 };
-CPalindroma::CPalindroma()
-{
-    tope=-1;
-}
-
-void CPalindroma::ingresarPalabra(char pa[20])
-{
-        tope=strlen(pa);//numero de caracteres de la palabra
-        strcpy(dato,pa);
+CExpresiones::CExpresiones(){
+    tope= -1;
 
 }
-void CPalindroma::imprimirDatos()
-{
-    cout<<"la palabra alrevez es: ";
-        for (int i=tope;i>=0;i--)
+
+void CExpresiones::convertirPre(char op,int a,int b){
+        if(op==43||op==42||op==45||op==47)//igual a suma, multipliccion, resta, divicion
         {
-            cout<<dato[i];
+            cout<<op<<","<<a<<","<<b<<endl;
         }
-        cout<<endl;
+  else
+  {
+      cout<<"operacion no valida";
 
-}
-int CPalindroma::compararPalabra(char p[20])
-{
-    tope=strlen(p);//NOS DEVUELVE EL NUMERO DE CARACTERES
-    for (int i=0;i<tope;i++)
-    {
+  }
 
-        if (dato[tope-1-i]!=p[i])
+        }
+
+void CExpresiones::convertirPost(char op,int a,int b){
+    if(op==43||op==42||op==45||op==47)//igual a suma, multipliccion, resta, divicion
         {
-           cout<<"No es palindroma "<<endl;
-                cout<<dato[tope-1-i]<<"--no es igual--"<<p[i]<<endl;
-           return 0;
+            cout<<a<<","<<b<<","<<op<<endl;
         }
-    }
-    cout<<"La palabra es palindroma"<<endl;
-    return 0;
+  else
+  {
+      cout<<"operacion no valida";
+
+  }
+
 }
+
 int main()
 {
-    CPalindroma C1;
-    char palabra[20];
-    cout << "//INGRESE LA PALABRA//"<< endl;
-    cin>>palabra;
-    C1.ingresarPalabra(palabra);
-    C1.imprimirDatos();
-    C1.compararPalabra(palabra);
-    return 0;
+    int a1, b1,r=0;
+    char op1;
+
+
+    cout<<"ingrese un numero"<<endl;
+    cin>>a1;
+    cout<<"ingrese una operacion"<<endl;
+    cin>>op1;
+    cout<<"ingrese un numero"<<endl;
+    cin>>b1;
+    CExpresiones C1;
+
+    do{
+     cout<<"//QUE QUIERES HACER?///"<<endl<<"1-----Prefija"<<endl<<"2----Postfija"<<endl<<"3----Salir"<<endl;
+     cin>>r;
+
+switch (r){
+          case 1:{
+              C1.convertirPre(op1,a1,b1);
+                  break;
+                  };
+
+            case 2:{
+
+
+                      C1.convertirPost(op1,a1,b1);
+                  break;
+                  };
+
+
+
+
+
+}
+    }while (r!=3);
+    cout<<"bye bye";
+return 0;
 }
