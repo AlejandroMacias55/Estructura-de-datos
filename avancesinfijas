@@ -1,0 +1,104 @@
+#include <iostream>
+#include <string.h>
+#include <stdlib.h>
+using namespace std;
+
+class CInfijas{
+private:
+    int tope;
+    char infija[];
+public:
+    CInfijas();
+    void ingresarInfija(char infi[]);
+    void convertirPre();
+    void convertirPost();
+    int  obtenerprioridad(char op1,char op2);
+    void separarOperadores();
+    void separarOperandos();
+};
+CInfijas::CInfijas(){
+ tope=-1;
+
+ }
+ void CInfijas::ingresarInfija(char infi[]){
+    tope=strlen(infi);
+    strcpy(infija, infi);
+
+
+}
+void CInfijas::convertirPre(){
+
+
+
+
+}
+void CInfijas::convertirPost(){
+
+}
+int CInfijas::obtenerprioridad(char op1,char op2){
+
+int prec1, prec2;
+
+switch(op1)
+{
+case '+':
+prec1=1;
+break;
+
+case '-':
+prec1=2;
+break;
+
+case '*':
+prec1=3;
+break;
+
+case '/':
+prec1=4;
+break;
+
+case '^':
+prec1=5;
+}
+switch(op2)
+{
+case '+':
+prec2=1;
+break;
+
+case '-':
+prec2=2;
+break;
+
+case '*':
+prec2=3;
+break;
+
+case '/':
+prec2=4;
+break;
+
+case ')':
+prec2=5;
+
+case '(':
+prec2=6;
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+int main(){
+
+
+
+}
